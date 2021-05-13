@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Scanner;
 public class Main {
     private static String log;
@@ -38,13 +37,12 @@ public class Main {
                     else
                     break;
             }
-    CipherBase(log,pass,3);
+    CipherBase();
     }
-    private static void CipherBase(String login, String password, int schift){
-        String enAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String ruAlphabet = "АБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-        char [][] logPassArr = new char[log.length()][pass.length()];
-        logPassArr [0] = (char) log.split("");
-//        System.out.println(blockPass);
+    private static void CipherBase(){
+        String[][] logPassArr = new String[10][20];
+        logPassArr [0] = log.split("");
+        logPassArr [1] = pass.split("");
+        System.out.println(Arrays.toString(logPassArr));
     }
 }
