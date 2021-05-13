@@ -37,12 +37,20 @@ public class Main {
                     else
                     break;
             }
-    CipherBase();
+        Encrypt(log, pass);
     }
-    private static void CipherBase(){
-        String[][] logPassArr = new String[10][20];
-        logPassArr [0] = log.split("");
-        logPassArr [1] = pass.split("");
-        System.out.println(Arrays.toString(logPassArr));
+    private static String Encrypt (String login, String password){
+        String encriptPass;
+        int schift = 5;
+        String enAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        encriptPass = login.concat(password).toUpperCase().trim();
+        for (int i = 0; i < encriptPass.length(); i++){
+            char replase = encriptPass.charAt(i); //Вычислили первый символ нешифрованного пароля.
+            int index = enAlphabet.indexOf(replase)+schift; // Нашли индекс этого символа в Англ Алфавите и зашифровали его.
+            char enRep = enAlphabet.charAt(index); //Запомнили символ английского алфавита
+            encriptPass = encriptPass.replace(replase, enRep);
+        }
+        System.out.println(encriptPass);
+        return encriptPass;
     }
 }
