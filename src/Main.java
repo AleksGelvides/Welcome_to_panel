@@ -64,9 +64,9 @@ public class Main {
             } else
                 break;
         }
-        savedEnPass = encrypt(log,pass,shift);
+        savedEnPass = encrypter(log,pass,shift);
     }
-    private static StringBuilder encrypt (String login, String password, int ciphershift){
+    private static StringBuilder encrypter (String login, String password, int ciphershift){
         String enAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         StringBuilder fullencrypt = new StringBuilder(password.toUpperCase());
         for (int i = 0; i < fullencrypt.length(); i++){
