@@ -82,6 +82,7 @@ public class Main {
             if(enAlphabet.lastIndexOf(checkPass.charAt(i))-shift <= 0) enAlphabet = enAlphabet.concat(enAlphabet);
             checkPass.setCharAt(i, enAlphabet.charAt(enAlphabet.indexOf(String.valueOf(checkPass.charAt(i)))-shift));
         }
+        //Отрицательный выход за диапазон
         return checkPass;
     }
 }
