@@ -29,7 +29,7 @@ public class Main {
             }
                 boolean passcy = true;
                 while (passcy) {
-                    System.out.print("Придумайте и введите пароль (До 20 символов): ");
+                    System.out.print("Придумайте и введите пароль (До 20 символов) пока поддерживает только латиницу:( ");
                     pass = scanner.nextLine();
                     if (pass.length() > 20) {
                         System.out.println("Слишком длинный пароль, попробуйте еще раз");
@@ -47,26 +47,15 @@ public class Main {
                 pass = null;
             } else
                 break;
-            Encrypt(log, pass, shift);
         }
     }
-    private static String Encrypt (String login, String password, int ciphershift){
-//        copyOfRange(array, from, to) - спользовать это, что бы всё заработало.
-        String encriptPass;
+    private static StringBuilder Encrypt (String login, String password, int ciphershift){
         String enAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        encriptPass = password.concat(log).toUpperCase().trim();
-        String noEncriptpass = encriptPass;
-        for (int i = 0; i < encriptPass.length(); i++){
-            if (encriptPass.charAt(i) != noEncriptpass.charAt(i)) continue;
-            for (int g = 0; i < noEncriptpass.length(); i++){
-                char replase = encriptPass.charAt(i); //Вычислили первый символ нешифрованного пароля.
-                int index = enAlphabet.indexOf(replase) + ciphershift; // Нашли индекс этого символа в Англ Алфавите и зашифровали его.
-                char enRep = enAlphabet.charAt(index); //Запомнили символ английского алфавита
-                encriptPass = encriptPass.replace(replase, enRep);
-                break;
-            }
+        StringBuilder fullencrypt = new StringBuilder(pass.toUpperCase());
+        for (int i = 0; i < fullencrypt.length(); i++){
+            if(enAlphabet.lastIndexOf(fullencrypt.charAt(i))+shift >= enAlphabet.length()) enAlphabet = enAlphabet.concat(enAlphabet);
+            fullencrypt.setCharAt(i, enAlphabet.charAt(enAlphabet.indexOf(String.valueOf(fullencrypt.charAt(i)))+shift));
         }
-//        System.out.println(encriptPass);
-        return encriptPass;
+        return fullencrypt;
     }
 }
